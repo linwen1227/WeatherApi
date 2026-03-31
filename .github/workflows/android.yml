@@ -2,24 +2,24 @@ name: Android CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master ]    # 程式碼推送的分支
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    # ubuntu 虛擬機
 
     steps:
-      - name: Checkout
+      - name: Checkout         #   下載你的程式碼
         uses: actions/checkout@v4
 
-      - name: Setup JDK
+      - name: Setup JDK         #   下載java
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Grant permission
+      - name: Grant permission    # 在Linux加gradlew權限
         run: chmod +x gradlew
 
-      - name: Build
-        run: ./gradlew assembleDebug
+      - name: Build             #編譯 + 執行
+        run: ./gradlew assembleDebug   
